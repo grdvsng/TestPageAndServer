@@ -1,0 +1,48 @@
+.MainTable {
+	position: relative; 
+	
+	margin:	  auto;
+	
+	top:	  0%;
+	
+	width:   90%;
+	
+	font-family: Arial, Times, sherif;
+
+	max-width: $max_table_width;
+	min-width: $min_table_width;
+
+	font-size: $table_font_size;
+	
+	tr {
+		width: 100%;
+		text-align: center;
+
+		td {
+		display:table-cell;
+		width: 8.33%;
+		
+			*::first-letter {
+				text-transform: capitalize;
+			}
+		}
+	}
+}
+
+#advertising_small_text {
+	font-weight: 	900;
+	font-size:      $advertising_small_text_size;
+	
+	letter-spacing: 0.2em;
+
+	text-transform: uppercase;
+}
+
+#advertising_main_text {
+	font-weight: 	700;
+	font-size:      $advertising_main_text_size;
+
+	letter-spacing: 0.1em;
+
+	text-transform: none;
+}

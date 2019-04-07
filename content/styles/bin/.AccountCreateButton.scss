@@ -1,0 +1,17 @@
+.AccountCreateButton {
+	padding: 1% 2% 1% 2%;
+	
+	font-weight: 700;
+	font-size:   $accountCreateButton_font_size;
+
+	outline: none;
+
+	margin-top:    1%;
+	margin-bottom: 5%;
+	
+	border-radius: 5px;
+	border: 1px groove rgb(34, 139, 34);
+
+	background-color: rgb(34, 139, 34);
+	background-color: rgba(34, 139, 34, 0.8);
+}

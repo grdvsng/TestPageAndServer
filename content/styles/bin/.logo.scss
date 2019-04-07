@@ -1,0 +1,38 @@
+.logo {
+
+	text-margin: auto;
+	text-align:  left;
+	
+	#logo_1,  #logo_3{
+		filter: invert(1);
+	}
+
+	#logo_2 {
+		filter: invert(0.4) sepia(1) hue-rotate(180deg) contrast(2.5);
+	}
+
+	img{
+		vertical-align: middle;
+		height: $logo_height;
+	}
+
+
+	p {
+		filter: none;
+
+		display:  inline-block;
+		position: relative;
+
+		font-family: Arial;
+		font-weight: $logo_font_width;
+		font-size:   $logo_font_text_size;
+
+	}
+}
+
+#midle_logo {
+	p {
+		color: rgb(84, 122, 190);
+		color: rgba(84, 122, 190, 0.4);
+	}
+}

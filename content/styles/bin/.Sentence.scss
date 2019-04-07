@@ -1,0 +1,30 @@
+.Sentence {
+	position: relative;
+
+	width: 100%;
+
+	border-bottom-width: 2px;
+	border-top-width:    0px;
+	border-left-width:   0px;
+	border-right-width:  0px;
+
+	border-style:        groove;
+	border-color:        rgb(84, 122, 190);
+	border-color:        rgba(84, 122, 190, 0.9);
+
+	box-shadow: 1% 1% 1% 1% black;
+
+	margin-bottom:  1%;
+	padding: 		1% 1% 1% 1%;
+
+	display: 	 none;
+	visibility:  hidden;
+
+	color: rgb(84, 122, 190);
+	font-size: $attention_font_size;
+}
+
+#bottom_Sentence {
+	border-bottom-width: 0px;
+	border-top-width:    2px;
+}

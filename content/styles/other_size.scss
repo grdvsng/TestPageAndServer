@@ -1,0 +1,40 @@
+$max_table_width: 819px;
+$min_table_width: 320px;
+
+$table_font_size: 12pt;
+
+$advertising_small_text_size: 8pt;
+$advertising_main_text_size:  28pt;
+
+$logo_font_text_size: 11pt;
+$logo_font_width:     500;
+$logo_height:         120%;
+
+$base_form_width: 	  		  		    58%;
+$base_form_input_text_size:   		    10pt;
+$base_form_submit_font_size:  		    10pt;
+$base_form_submit_font_height:          5vh;
+$base_form_submit_font_width: 		    thin;
+$base_form_domain_statust_font_size:    12pt;
+$base_form_domain_statust_text_indient: 10px;
+
+$attention_font_weight: 500;
+$attention_font_size:   18pt;
+
+$onbody_head_text:	18pt;
+
+$sentence_font_size: 24pt;
+
+$accountCreateButton_font_size: 1.5vh;
+
+$foot_font_size: 12pt;
+$foot_span_font_size: 3vh;
+
+@import 'bin/.MainTable';
+@import 'bin/.MainDiv';
+@import 'bin/.logo';
+@import 'bin/.domain_base_form';
+@import 'bin/.Attention';
+@import 'bin/.Sentence';
+@import 'bin/.AccountCreateButton';
+@import 'bin/.Sentence_icons';
