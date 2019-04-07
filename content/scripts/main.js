@@ -421,6 +421,15 @@ var Page = {
 			attributes: {
 			},
 		},
+
+		MainDiv: {
+			id: false,
+			tag: false,
+			class: 'MainDiv',
+
+			attributes: {
+			},
+		},
 	},
 
 
@@ -657,9 +666,10 @@ var Page = {
 
 		if (Page.is_attention) {body.removeChild(Page.is_attention);}
 		if (bg) {elem.style.backgroundColor = bg;}
-		console.log(window.scrollY, window.pageYOffset, rect.top)
+		
 		elem.style.top    = top + 'px';
 		elem.className    = "Attention";
+		elem.style.width  = Page.MainDiv[0].getBoundingClientRect().width + 'px';
 		elem.id           = "NowAttention"
 		elem.style.width  = rect.width;
 
