@@ -399,7 +399,7 @@ var Page = {
 
 			attributes: {
 				onclick: function() {
-					event.preventDefault();
+					this.required('1')
 					if (!Page.submit_activated) {return false;}
 					
 					else {

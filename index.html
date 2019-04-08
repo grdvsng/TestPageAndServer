@@ -45,8 +45,8 @@
 							<!-- on main.js used preventDefault for stop page refre -->
 							<form 
 								class="domain_base_form"
-								action
-								method="get"
+								action="/app/get/domain"
+								method="GET"
 							>
 								<div id="domain_base_form_div">
 									<input
@@ -61,9 +61,8 @@
 									<input 
 										id="domain_base_form_submit"
 										alt="проверить"
-										placeholder="проверить"
 										type="submit" 
-										value="проверить"
+										value="submit"
 									>
 									<div id="domain_base_form_domain_status">
 										Введите имя домена с кодом страны
@@ -330,6 +329,8 @@
 					id="ACC_password"
 					type="password" 
 					name="password"
+					autocomplete
+					suggested="current-password"
 					minlength="10"
 					placeholder="Введите пароль"
 					required="required" 
