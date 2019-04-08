@@ -125,7 +125,19 @@ var Page = {
 
 					desription: 
 						create in visible page top special element with some information.
+				},
+				
+				scrollTop: {
+					varibles:
+						none.
+
+					return:
+						string - scroll top POS in px.
+
+					desription: 
+						find scroll top position in many browsers;				
 				}
+
 	*/
 
 	elems: {
@@ -146,16 +158,207 @@ var Page = {
 			}
 		*/
 
-		base_form: {
-			id: false,
+		ACC_submit: {
+			id: "ACC_submit",
 			tag: false,
-			class: "domain_base_form",
+			class: false,
 
 			attributes: {
-				onsubmit: function(event) {
+				onclick: function(event){
 					event.preventDefault();
-				},
+					alert("Регистрация временно недоступна.");
+
+					Page.ACC_submit.style.display = ''
+					Page.acc_create_page[0].methods.deactivate();
+				}
 			}
+		},
+
+		acc_create_buttons: {
+			id: false,
+			tag: false,
+			class: "AccountCreateButton",
+
+			attributes: {
+				onclick: function() {
+					Page.click_animation(this, 'resize', [1, 0.97]);
+
+					var visibility = Page.acc_create_page[0].style.display;
+					if (visibility === "") {
+						Page.acc_create_page[0].style.display = 'block';
+					}
+					else {Page.attention("Форма уже открыта.");}
+				}
+			},
+		},
+
+		acc_create_page: {
+			id: false,
+			tag: false,
+			class: "AccountCreatePage",
+
+			attributes: {
+				onclick: function() {
+					this.onmousemove();
+				},
+
+				onmousemove: function() {
+					var inputs;
+
+					if (Page.ACC_doc_status.inputs === undefined) {
+						inputs = Page.ACC_doc_status.inputs = Array.prototype.slice.call(Page.acc_create_page[0].getElementsByTagName('input'));
+					}
+					else {inputs = Page.ACC_doc_status.inputs;}
+					if (Page.ACC_doc_status.result) {
+						
+
+						if (inputs[0].value.length > 2 & inputs[1].value.length > 10) {
+							Page.ACC_submit.style.display = 'inline-block';
+						}
+					}
+					else{
+						Page.ACC_submit.style.display = '';
+					}
+				}
+			},
+
+			methods: {
+				deactivate: function() {
+					var inps = Page.ACC_doc_status.inputs;
+					
+					Page.acc_create_page[0].style.display = '';
+					Page.ACC_document.methods.deactivate();
+					Page.ACC_doc_status.methods.deactivate();
+
+					for (var n in inps) {inps[n].value = "";}
+				}
+			}
+		},
+
+		ACC_upload: {
+			id: "ACC_upload",
+			tag: false,
+			class: false,
+
+			attributes: {
+				onclick: function(){
+					if (!Page.ACC_doc_status.run | Page.ACC_doc_status.run === undefined) {
+						Page.ACC_document.click();
+					}
+					else {Page.attention("отклонено обрабатывается файл.");}
+				}
+			}
+		},
+
+		ACC_close: {
+			id: "ACC_close",
+			tag: false,
+			class: false,
+
+			attributes: {
+				onclick: function(){
+					Page.acc_create_page[0].methods.deactivate();
+					Page.ACC_doc_status.run = false;
+				}
+			}
+		},
+
+		ACC_document: {
+			id: "ACC_document",
+			tag: false,
+			class: false,
+
+			attributes: {
+				onchange: function(event) {
+					var val = this.value;
+					
+					if (val !== "") {
+						Page.ACC_INFOspan.innerHTML = "обработка файлов"
+						Page.ACC_doc_status.src   = "./content/shaders/uploader/wait.svg";
+
+						return Page.ACC_doc_status.methods.rotate();
+					}
+
+					else {this.methods.deactivate();}
+				}
+			},
+
+			methods: {
+				deactivate: function(txt) {
+					var txt = (txt !== undefined) ? txt:"*Документы";
+
+					Page.ACC_doc_status.src     = "./content/shaders/uploader/upload.svg";
+					Page.ACC_INFOspan.innerHTML = txt;
+				}
+			}
+		},
+		
+		ACC_INFOspan: {
+			id: "ACC_INFOspan",
+			tag: false,
+			class: false,
+
+			attributes: {
+			}
+		},
+
+		ACC_doc_status: {
+			id: "ACC_doc_status",
+			tag: false,
+			class: false,
+
+			attributes: {
+			},
+
+			methods: {
+				rotate: function() {
+					var self = Page.ACC_doc_status,
+						circ = 360;
+						
+					function play(step) {
+						var visibility = Page.acc_create_page[0].style.display;
+						self.style.transform = "rotate(" + step + "deg)";
+						
+						if (step == 80)  {Page.ACC_INFOspan.innerHTML = "отцифровка данных";}
+						if (step == 240) {Page.ACC_INFOspan.innerHTML = "анализ результатов";}
+						if (visibility === '') {return Page.ACC_doc_status.methods.deactivate();}
+
+						if (step < circ) {setTimeout(function(){return play(step+8)}, 100);}
+						else {
+							var random = (Math.random() * 5) < 2.5;
+							Page.ACC_doc_status.run = false;
+
+							self.style.transform = "rotate(0deg)";
+							return Page.ACC_doc_status.methods.curent_status(random);
+						}
+					}
+
+					Page.ACC_doc_status.run = true;
+					return play(8);
+				},
+
+				curent_status: function(bool) {
+					var INFOspan = Page.ACC_upload.getElementsByTagName("span")[0];
+					
+					if (bool) {
+						Page.ACC_doc_status.src    = "./content/shaders/uploader/ok.svg";
+						INFOspan.innerHTML         = "данные подтверждены";
+						Page.ACC_doc_status.result = true;
+					}
+
+					else {
+						Page.ACC_document.methods.deactivate('<span style="color: DarkRed;">Данные некорректны');
+						Page.ACC_doc_status.result = false;
+					}
+				},
+
+				deactivate: function(txt) {
+					var txt = (txt !== undefined) ? txt:"*Документы";
+
+					Page.ACC_doc_status.style.transform = "rotate(0deg)";
+					Page.ACC_document.methods.deactivate();
+				}
+			},
 		},
 
 		base_form_div: {
@@ -196,6 +399,7 @@ var Page = {
 
 			attributes: {
 				onclick: function() {
+					event.preventDefault();
 					if (!Page.submit_activated) {return false;}
 					
 					else {
@@ -320,29 +524,15 @@ var Page = {
 
 			attributes: {
 				onscroll: function(event, topY) {
-					var topY = (topY !== undefined) ? topY:window.scrollY;
+					var top = Page.scrollTop();
 
 					if (Page.is_attention !== false) {
-						var top = Math.max(topY, Page.body[0].getBoundingClientRect().top);
-						top = (top > 0) ? top : -top;
-						console.log(Page.body[0].getBoundingClientRect().top)
-						Page.is_attention.style.top = top + 'px';
+						Page.is_attention.style.top = top;
 					}
+
+					Page.acc_create_page[0].style.top = (eval(top.split("px")[0]) + 100) + 'px';
 				}
 			},
-		},
-
-		create_buttons: {
-			id: false,
-			tag: false,
-			class: "AccountCreateButton",
-
-			attributes: {
-				onclick: function() {
-					Page.click_animation(this, 'resize', [1, 0.97]);
-					Page.attention("Регистрация аккаунтов временно недоступна.");
-				}
-			}
 		},
 
 		sentence_div_top: {
@@ -463,15 +653,20 @@ var Page = {
 		
 		*/
 
-		for (var n in this.elems) {
-			let elem  = this.elems[n];
+		for (var n in this.elems) {Page.load_element(n);}
+	},
 
-			Page[n] = this.find_element_or_elements(elem);
-			if (Page[n] instanceof Array) {
-				for (var num in Page[n]) {this.set_elem_Attributes(Page[n][num], elem);}
-			}
-			else {this.set_elem_Attributes(Page[n], elem);}
+	load_element: function(key) {
+		let elem = this.elems[key],
+			resp = this.find_element_or_elements(elem);
+
+		if (resp !== false) {Page[key] = resp;}
+		else {return null;}
+
+		if (Page[key] instanceof Array) {
+			for (var num in Page[key]) {this.set_elem_Attributes(Page[key][num], elem);}
 		}
+		else {this.set_elem_Attributes(Page[key], elem);}
 	},
 
 	set_elem_Attributes: function(elem, diction) {
@@ -519,7 +714,9 @@ var Page = {
 				let response = element[n];
 
 				if (response) {
-					var result = Page.getBy(n, response);
+					var value  = Page.getBy(n, response),
+						result = (value.length !== 0) ? value:false;
+					
 					break;
 				}
 			}
@@ -662,12 +859,12 @@ var Page = {
 			elem = document.createElement('div'),
 			body = this.body[0],
 			rect = body.getBoundingClientRect(),
-			top  = Math.max((window.scrollY) ? window.scrollY:0, window.pageYOffset, rect.top);
+			top  = Page.scrollTop();
 
 		if (Page.is_attention) {body.removeChild(Page.is_attention);}
 		if (bg) {elem.style.backgroundColor = bg;}
 		
-		elem.style.top    = top + 'px';
+		elem.style.top    = top;
 		elem.className    = "Attention";
 		elem.style.width  = Page.MainDiv[0].getBoundingClientRect().width + 'px';
 		elem.id           = "NowAttention"
@@ -678,6 +875,22 @@ var Page = {
 		
 		Page.is_attention = elem;
 		return Page.is_attention;
+	},
+
+	scrollTop: function() {
+		/*	Method scrollTop class Page.
+				return:
+					string - scroll top POS in px.
+
+				desription: 
+			find scroll top position in many browsers;				
+		*/
+
+		var scrollY = (window.scrollY) ? window.scrollY:0,
+			rect    = Page.body[0].getBoundingClientRect(),
+			result  = Math.max(scrollY, window.pageYOffset, rect.top);
+		
+		return result + 'px';
 	}
 }
 
@@ -706,5 +919,5 @@ function IE_preset() {
 		}
 	);
 
-	window.addEventListener('scroll', function() {Page.body[0].onscroll(event, window.pageYOffset);});
+	window.onscroll = Page.body[0].onscroll;
 }	

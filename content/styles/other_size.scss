@@ -30,11 +30,4 @@ $accountCreateButton_font_size: 1.5vh;
 $foot_font_size: 12pt;
 $foot_span_font_size: 3vh;
 
-@import 'bin/.MainTable';
-@import 'bin/.MainDiv';
-@import 'bin/.logo';
-@import 'bin/.domain_base_form';
-@import 'bin/.Attention';
-@import 'bin/.Sentence';
-@import 'bin/.AccountCreateButton';
-@import 'bin/.Sentence_icons';
+@import 'bin/Global'

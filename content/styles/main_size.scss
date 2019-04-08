@@ -14,7 +14,7 @@ $base_form_width: 	          		 	20em;
 $base_form_input_text_size:   	     	12pt;
 $base_form_submit_font_size:  		 	10pt; 
 $base_form_submit_font_width: 		 	auto;
-$base_form_submit_font_height:          8vh;
+$base_form_submit_font_height:          80px;
 $base_form_domain_statust_font_size:	10pt;
 $base_form_domain_statust_text_indient: 5px;
 
@@ -30,11 +30,4 @@ $accountCreateButton_font_size: 10pt;
 $foot_font_size: 2vh;
 $foot_span_font_size: 3.5vh;
 
-@import 'bin/.MainTable';
-@import 'bin/.MainDiv';
-@import 'bin/.logo';
-@import 'bin/.domain_base_form';
-@import 'bin/.Attention';
-@import 'bin/.Sentence';
-@import 'bin/.AccountCreateButton';
-@import 'bin/.Sentence_icons';
+@import 'bin/Global';

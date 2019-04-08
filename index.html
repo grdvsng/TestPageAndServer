@@ -304,5 +304,69 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="AccountCreatePage">
+			<div id="acc_create_lable">
+				Регистрация <span id="ACC_close">✖</span>
+			</div>
+			<form
+				action
+				method="post"
+			>	
+				<label for="ACC_username">Логин</label>
+				<br>
+				<input 
+					id="ACC_username"
+					type="text" 
+					name="username"
+					minlength="2" 
+					placeholder="Имя пользователя"
+					required="required"
+					alt="Введите имя пользователя" 
+				>
+				<br>
+				<label for="ACC_password">Пароль</label>
+				<br>
+				<input 
+					id="ACC_password"
+					type="password" 
+					name="password"
+					minlength="10"
+					placeholder="Введите пароль"
+					required="required" 
+					alt="Введите пароль не менее 10 символов" 
+				>
+				<br>
+				<div 
+					id="ACC_upload"
+					alt="Вложите скан страницы паспорта с фотографией" 
+					title="Вложите скан страницы паспорта с фотографией" 
+				>
+					<span id="ACC_INFOspan">
+						*Документы
+					</span>
+					<br>
+					<img 
+						id="ACC_doc_status"
+						src="./content/shaders/uploader/upload.svg"
+						alt="Вложите скан страницы паспорта с фотографией" 
+						title="Вложите скан страницы паспорта с фотографией"  
+					/>
+				</div>
+				<input 
+					id="ACC_document"
+					type="file" 
+					name="document" 
+				>
+				<br>
+				<input 
+					id="ACC_submit"
+					type="submit" 
+					name="submit"
+					placeholder="Подтвердить"
+					alt="Подтвердите" 
+					title="Подтвердите"
+				>
+			</form>
+		</div>
 	</body>
 </html>
