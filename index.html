@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title> Джино PromoPage</title>
+		<title>TestSuit</title>
 		<script 
 			src="content/scripts/main.js"
 			type="text/javascript"
@@ -25,7 +25,7 @@
 							>
 							</img>
 							<p>
-								домены
+								domains
 							</p>
 						</td>
 					</tr>
@@ -34,9 +34,9 @@
 							colspan="12"
 							id="advertising_small_text"
 						> 
-							только до 31 января
+							Only today!
 							<span id="advertising_main_text" >
-								<br>Честная цена<br>за домен.RU — 39₽
+								<br>Buy your own<br>domain.COM for — 1$
 							</span>
 						</td>
 					</tr>
@@ -44,8 +44,9 @@
 						<td colspan="12">
 							<!-- on main.js used preventDefault for stop page refre -->
 							<form 
+								id="domain_base_form_1"
 								class="domain_base_form"
-								action="/app/get/domain"
+								action="{{ url_for('get_domain') }}"
 								method="GET"
 							>
 								<div id="domain_base_form_div">
@@ -53,19 +54,19 @@
 										id="domain_base_form_input"
 										type="text"
 										name="domain"
-										alt="Введите имя домена с кодом страны (например: .ru)"
-										placeholder="example.ru"
+										alt="Enter domain name with country code (for example: example.com)"
+										placeholder="example.com"
 										autocomplite="off"
 										autofocus
 									>
 									<input 
 										id="domain_base_form_submit"
-										alt="проверить"
+										alt="submit"
 										type="submit" 
 										value="submit"
 									>
 									<div id="domain_base_form_domain_status">
-										Введите имя домена с кодом страны
+										Enter domain name with country code
 									</div>
 								</div>
 							</form>
@@ -74,7 +75,7 @@
 					<tr>
 						<td colspan="12">
 							<button class="AccountCreateButton">
-								создать аккаунт
+								Create an account
 							</button>
 						</td>
 					</tr>
@@ -98,14 +99,14 @@
 							>
 							</img>
 							<p>
-								домены
+								domains
 							<p>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="12">
 							<h1>
-								зарегистрировав домен у нас, вы получаете
+								registering a domain with us, you get		
 							</h1>
 						</td>
 					</tr>
@@ -116,11 +117,10 @@
 								src="./content/shaders/features/businesscard.svg"
 							>
 							<h2>
-								сайт-визитка
+								site-card
 							</h2>
 							<h3>
-								зарегистрируй сайт за 5 минут	
-								и получай фидбек от клиентов уже сегодня.
+								get feedback from customers today.
 							</h3>
 						</td>
 						<td colspan="3">
@@ -129,10 +129,10 @@
 								src="./content/shaders/features/dns.svg"
 							>
 							<h2>
-								поддержка DNS
+								DNS support
 							</h2>
 							<h3>
-								забудьте об ошибке 404.
+								forget error 404.
 							</h3>
 						</td>
 						<td colspan="3">
@@ -141,10 +141,10 @@
 								src="./content/shaders/features/certificate.svg"
 							>
 							<h2>
-								сертификат о владении доменом
+								domain ownership certificate
 							</h2>
 							<h3>
-								юридическая защита домена.
+								legal protection of the domain.
 							</h3>
 						</td>
 						<td colspan="3">
@@ -153,10 +153,10 @@
 								src="./content/shaders/features/autorenewal.svg"
 							>
 							<h2>
-								автопродлевание
+								autopayment
 							</h2>
 							<h3>
-								забудьте о проверке лицевого счета и пропущенных платежах.
+								Forget about checking your account and missing payments.
 							</h3>
 						</td>
 					</tr>
@@ -178,11 +178,11 @@
 								src="./content/shaders/features/cloud.svg"
 							>
 							<h2>
-								облачное хранилище на 20 ГБ
+								20 GB cloud storage
 							</h2>
 							<h3>
-								начальный объем памяти позволяет вам развернуть красивый 
-								и заполненный контентом ресурс.
+								the initial amount of memory allows you to deploy beautiful
+								and content-filled resource.
 							</h3>
 						</td>
 						<td colspan="3">
@@ -191,10 +191,10 @@
 								src="./content/shaders/features/freessl.svg"
 							>
 							<h2>
-								бесплатный SSL-сертификат
+								free SSL certificate
 							</h2>
 							<h3>
-								мы не берем деньги за безопасность ваших клиентов.
+								We do not charge for the safety of your customers.
 							</h3>
 						</td>
 						<td colspan="3">
@@ -203,10 +203,10 @@
 								src="./content/shaders/features/dnssec.svg"
 							>
 							<h2>
-								DNSSEC в один клик
+								DNSSEC in one click
 							</h2>
 							<h3>
-								мы избавим вас от долгой и нудной настройки.
+								we will save you from a long and tedious setup.
 							</h3>
 						</td>
 						<td colspan="3">
@@ -215,10 +215,10 @@
 								src="./content/shaders/features/redirect.svg"
 							>
 							<h2>
-								перенаправление
+								redirection
 							</h2>
 							<h3>
-								используй наши функции редиректа для эффективного управления ресурсами.
+								use our redirect functions for effective resource management.
 							</h3>
 						</td>
 					</tr>
@@ -236,7 +236,7 @@
 					<tr>
 						<td colspan="12">
 							<button class="AccountCreateButton">
-								создать аккаунт
+								create an account
 							</button>
 						</td>
 					</tr>
@@ -257,7 +257,7 @@
 							>
 							</img>
 							<p>
-								домены
+								domains
 							<p>
 						</td>
 					</tr>
@@ -265,15 +265,15 @@
 						<td colspan="12">
 							<p>
 								<h2>
-									почему стоит выбрать «Джино»‎?
+									Why «TestSuit»‎?
 								</h2>
 							</p>
 							<p>
 								<h1>
-									«Джино»‎ более 18 лет на рынке,
-									<br>имеет 270000 довольных клиентов,
-									<br>собственную панель управления
-									<br>и многое другое.
+									"TestSuit" more than 18 days on the market,
+									<br> has 4 satisfied customers,
+									<br> own blank panel
+									<br> and the sea of ​​advertising.
 								</h1>
 							</p>
 						</td>
@@ -281,7 +281,7 @@
 					<tr>
 						<td colspan="12">
 							<button class="AccountCreateButton">
-								создать аккаунт
+								Create an account
 							</button>
 						</td>
 					</tr>
@@ -289,13 +289,13 @@
 						<td colspan=12>
 							<div id="special_offer">
 								<p>
-									вы получите 1000 балов в системе лояльности <u>Джино.Плюсы</u>
-									<br>зарегистрировавшись в течении 24 часов после посещения данной страницы
+									you will get 20 points in the loyalty system <u> MySuit.Loyalty</u>
+									<br>after registering within 24 minutes after visiting this page
 								</p>
 								<div id=special_offer_price_line>
 								</div>
 								<p id="special_offer_price">
-									1000+
+									20+
 								<p>
 							</div>
 						</td>
@@ -305,25 +305,25 @@
 		</div>
 		<div class="AccountCreatePage">
 			<div id="acc_create_lable">
-				Регистрация <span id="ACC_close">✖</span>
+				check in <span id="ACC_close">✖</span>
 			</div>
 			<form
 				action
 				method="post"
 			>	
-				<label for="ACC_username">Логин</label>
+				<label for="ACC_username">Login</label>
 				<br>
 				<input 
 					id="ACC_username"
 					type="text" 
 					name="username"
 					minlength="2" 
-					placeholder="Имя пользователя"
+					placeholder="username"
 					required="required"
-					alt="Введите имя пользователя" 
+					alt="Enter username" 
 				>
 				<br>
-				<label for="ACC_password">Пароль</label>
+				<label for="ACC_password">Password</label>
 				<br>
 				<input 
 					id="ACC_password"
@@ -332,25 +332,25 @@
 					autocomplete
 					suggested="current-password"
 					minlength="10"
-					placeholder="Введите пароль"
+					placeholder="Password"
 					required="required" 
-					alt="Введите пароль не менее 10 символов" 
+					alt="10 > simbols" 
 				>
 				<br>
 				<div 
 					id="ACC_upload"
-					alt="Вложите скан страницы паспорта с фотографией" 
-					title="Вложите скан страницы паспорта с фотографией" 
+					alt="special document" 
+					title="upload special document" 
 				>
 					<span id="ACC_INFOspan">
-						*Документы
+						*Documents
 					</span>
 					<br>
 					<img 
 						id="ACC_doc_status"
 						src="./content/shaders/uploader/upload.svg"
-						alt="Вложите скан страницы паспорта с фотографией" 
-						title="Вложите скан страницы паспорта с фотографией"  
+						alt="upload special document" 
+						title="upload special document"  
 					/>
 				</div>
 				<input 
@@ -363,9 +363,9 @@
 					id="ACC_submit"
 					type="submit" 
 					name="submit"
-					placeholder="Подтвердить"
-					alt="Подтвердите" 
-					title="Подтвердите"
+					placeholder="submit"
+					alt="submit" 
+					title="submit"
 				>
 			</form>
 		</div>

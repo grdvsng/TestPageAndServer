@@ -166,7 +166,7 @@ var Page = {
 			attributes: {
 				onclick: function(event){
 					event.preventDefault();
-					alert("Регистрация временно недоступна.");
+					alert("Registration is temporarily unavailable.");
 
 					Page.ACC_submit.style.display = ''
 					Page.acc_create_page[0].methods.deactivate();
@@ -187,7 +187,7 @@ var Page = {
 					if (visibility === "") {
 						Page.acc_create_page[0].style.display = 'block';
 					}
-					else {Page.attention("Форма уже открыта.");}
+					else {Page.attention("The form is already open.");}
 				}
 			},
 		},
@@ -245,7 +245,7 @@ var Page = {
 					if (!Page.ACC_doc_status.run | Page.ACC_doc_status.run === undefined) {
 						Page.ACC_document.click();
 					}
-					else {Page.attention("отклонено обрабатывается файл.");}
+					else {Page.attention("Rejected, file processed.");}
 				}
 			}
 		},
@@ -273,8 +273,8 @@ var Page = {
 					var val = this.value;
 					
 					if (val !== "") {
-						Page.ACC_INFOspan.innerHTML = "обработка файлов"
-						Page.ACC_doc_status.src   = "./content/shaders/uploader/wait.svg";
+						Page.ACC_INFOspan.innerHTML = "file processing";
+						Page.ACC_doc_status.src     = "./content/shaders/uploader/wait.svg";
 
 						return Page.ACC_doc_status.methods.rotate();
 					}
@@ -285,7 +285,7 @@ var Page = {
 
 			methods: {
 				deactivate: function(txt) {
-					var txt = (txt !== undefined) ? txt:"*Документы";
+					var txt = (txt !== undefined) ? txt:"*Documents";
 
 					Page.ACC_doc_status.src     = "./content/shaders/uploader/upload.svg";
 					Page.ACC_INFOspan.innerHTML = txt;
@@ -319,8 +319,8 @@ var Page = {
 						var visibility = Page.acc_create_page[0].style.display;
 						self.style.transform = "rotate(" + step + "deg)";
 						
-						if (step == 80)  {Page.ACC_INFOspan.innerHTML = "отцифровка данных";}
-						if (step == 240) {Page.ACC_INFOspan.innerHTML = "анализ результатов";}
+						if (step == 80)  {Page.ACC_INFOspan.innerHTML = "data digitization";}
+						if (step == 240) {Page.ACC_INFOspan.innerHTML = "analysis of results";}
 						if (visibility === '') {return Page.ACC_doc_status.methods.deactivate();}
 
 						if (step < circ) {setTimeout(function(){return play(step+8)}, 100);}
@@ -342,18 +342,18 @@ var Page = {
 					
 					if (bool) {
 						Page.ACC_doc_status.src    = "./content/shaders/uploader/ok.svg";
-						INFOspan.innerHTML         = "данные подтверждены";
+						INFOspan.innerHTML         = "data confirmed";
 						Page.ACC_doc_status.result = true;
 					}
 
 					else {
-						Page.ACC_document.methods.deactivate('<span style="color: DarkRed;">Данные некорректны');
+						Page.ACC_document.methods.deactivate('<span style="color: DarkRed;">Data is not correct');
 						Page.ACC_doc_status.result = false;
 					}
 				},
 
 				deactivate: function(txt) {
-					var txt = (txt !== undefined) ? txt:"*Документы";
+					var txt = (txt !== undefined) ? txt:"*Documents";
 
 					Page.ACC_doc_status.style.transform = "rotate(0deg)";
 					Page.ACC_document.methods.deactivate();
@@ -399,7 +399,7 @@ var Page = {
 
 			attributes: {
 				onclick: function() {
-					this.required('1')
+					event.preventDefault();
 					if (!Page.submit_activated) {return false;}
 					
 					else {
@@ -439,7 +439,7 @@ var Page = {
 
 					else {
 						self.submit_deactive();
-						Page.attention(value + " - неправильный формат домена.");
+						Page.attention(value + " - wrong format for Domain.");
 					}
 				},
 
@@ -456,11 +456,11 @@ var Page = {
 				},
 
 				domain_status: function(bool, value) {
-					let text      = "Домен " + value + " - ",
-						prise     = (Math.floor(Math.random() * 100) + 38) + "₽",
+					let text      = "Domain " + value + " - ",
+						prise     = (Math.floor(Math.random() * 100) + 38) + "$",
 						color     = bool ? "SeaGreen":"Tomato",
-						status    = bool ? "свободен.":"занят.",
-						bye_state = bool ? "Купить за " + prise:"Попробуйте снова.",
+						status    = bool ? "free.":"busy.",
+						bye_state = bool ? "Buy for " + prise:"Try again.",
 						message   = text + status;
 
 					var elem = document.createElement("p");
@@ -507,7 +507,7 @@ var Page = {
 					function timeout(func) {setTimeout(function() {eval(func)}, 10);}
 					Page.click_animation(target, 'recolor');
 					
-					if (bool) {timeout("alert('Переход временно не доступен')");}
+					if (bool) {timeout("alert('Transition temporarily unavailable')");}
 
 					else {
 						Page.base_form_input.value = Page.base_form_input.value.split('.')[0] + '.';
@@ -570,7 +570,7 @@ var Page = {
 						parent       = target.parentElement,
 						line         = parent.parentElement.id,
 						hidden_text  = parent.getElementsByTagName('h3')[0],
-						text  		 = (hidden_text) ? hidden_text.innerHTML:'Текст недоступен';
+						text  		 = (hidden_text) ? hidden_text.innerHTML:'undefined :(';
 					
 					Page.sentence_div = (line === top_id) ? Page.sentence_div_top:Page.sentence_div_bot;
 
@@ -598,7 +598,7 @@ var Page = {
 				},
 
 				onclick: function() {
-					Page.attention("Ваш сеанс превысил 24 часа.");
+					Page.attention("Your session exceeded 24 minutes.");
 				}
 			},
 		},
@@ -643,7 +643,7 @@ var Page = {
 		Page.submit_activated   = false
 		Page.is_attention       = false
 		Page.domain_result      = false
-		Page.status_basic_text  = "Введите имя домена с кодом страны";
+		Page.status_basic_text  = "Enter domain name with country code";
 	},
 
 	onload: function() {
@@ -911,7 +911,7 @@ function IE_preset() {
 
 			logo.removeChild(img);
 
-			new_logo.innerHTML = "ДЖИНО";
+			new_logo.innerHTML = "MyTest";
 			new_logo.style.fontSize  = '1.3em';
 			new_logo.style.verticalAlign = 'middle';
 
